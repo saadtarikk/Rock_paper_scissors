@@ -29,8 +29,6 @@
         </select>
         <br>
         <input class="submit-btn" type="submit" name="Submit" id="Submit">
-
-    
     
     </form>
     <br>
@@ -40,23 +38,20 @@
         <p>{{player2_name}} chose {{player2_choice}}</p>
     </div>
 
-    <!-- Set appropriate coloured border for who wins or none for draw -->
-
-    <!-- Setup for a computer win  -->
     {% if winner == "Computer" %}
     <div class="winner-box winner-box-red">
         <h2>{{winner}} WINS!!</h2>
         <p>{{player2_choice}} beats {{player1_choice}}</p>
     </div>
 
-    <!-- Setup for player1 win  -->
+
     {% elif winner == player1_name %}
     <div class="winner-box winner-box-green">
         <h2>{{winner}} WINS!!</h2>
         <p>{{player1_choice}} beats {{player2_choice}}</p>
     </div>
 
-    <!-- Setup for a draw  -->
+  
     {% elif winner == None %}
     <div class="winner-box">
         <h2>It's a DRAW!!</h2>
