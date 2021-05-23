@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="game-container">
+    <form action="/play" method="POST">
+        <label for="player1_name">Player 1</label>
+        <br>
+        <input type="text", name="player1_name" placeholder="Enter Name" value="{{player1_name}}">
+        <select name="player1_selection" id="player1_selection">
+            <option value="" selected disabled hidden>Choose your option</option>
+            {% if player1_choice == "rock" %}
+            <option selected value="rock">Rock</option>
+            {% else %}
+            <option value="rock">Rock</option>
+            {% endif %}
+
+            {% if player1_choice == "paper" %}
+            <option selected value="paper">Paper</option>
+            {% else %}
+            <option value="paper">Paper</option>
+            {% endif %}
+
+            {% if player1_choice == "scissors" %}
+            <option selected value="scissors">Scissors</option>
+            {% else %}
+            <option value="scissors">Scissors</option>
+            {% endif %}
+
+        </select>
+        <br>
+        <input class="submit-btn" type="submit" name="Submit" id="Submit">
+
+    
+    
+    </form>
+    <br>
+    <br>
+    <div class="computer-box">
+        <p>Player 2</p>
+        <p>{{player2_name}} chose {{player2_choice}}</p>
+    </div>
+
+    <!-- Set appropriate coloured border for who wins or none for draw -->
+
+    <!-- Setup for a computer win  -->
+    {% if winner == "Computer" %}
+    <div class="winner-box winner-box-red">
+        <h2>{{winner}} WINS!!</h2>
+        <p>{{player2_choice}} beats {{player1_choice}}</p>
+    </div>
+
+    <!-- Setup for player1 win  -->
+    {% elif winner == player1_name %}
+    <div class="winner-box winner-box-green">
+        <h2>{{winner}} WINS!!</h2>
+        <p>{{player1_choice}} beats {{player2_choice}}</p>
+    </div>
+
+    <!-- Setup for a draw  -->
+    {% elif winner == None %}
+    <div class="winner-box">
+        <h2>It's a DRAW!!</h2>
+        <p>{{player1_choice}} equals {{player2_choice}}</p>
+    </div>
+
+    {% endif %}
+
+
+</section>
+
+{% endblock %}
+
